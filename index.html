@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <meta name="author" content="Michał Michasiów" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="text"></div>
+        <div class="retry">Nowa gra</div>
+        <div class="logcontainer">
+            <div class="title">Rayneven</div>
+            <input class="nick" placeholder="Twój nick..." maxlength="16">
+            <div class="line"></div>
+            <div class="wejdz">Wejdź do gry</div>
+        </div>
+
+
+        <div class="gracontainer">
+            <div class="info">
+                <div class="statname">Nick:<div id="nickgra" class="statnamev"></div>
+                </div>
+                <div class="statname">Poziom:<div id="poziom" class="statnamev"></div>
+                </div>
+                <div class="statname">Życie:<div id="zycie" class="statnamev"></div>
+                </div>
+                <div class="statname">Złoto:<div id="zloto" class="statnamev"></div>
+                </div>
+            </div>
+            <div class="city">
+                <div class="button" id="bkarczma">Karczma</div>
+                <div class="button" id="bkosciol">Kościół</div>
+                <div class="button" id="bwyprawa">Wyprawa</div>
+                <div class="button" id="bkowal">Kowal</div>
+                <div id="bkoniec">Koniec</div>
+            </div>
+            <div class="inside" id="ikarczma">
+                <div class="insidetitle" id="titlekarczma">
+                    <div class="titlecontainer">Wchodzisz do karczmy, widzisz pełno różnych osób. Podchodzisz do barmana.<br /><span class="talk">Czego się napijesz, przyjacielu?</span></div>
+                </div>
+                <div class="options">
+                    <div class="option" id="checkquests">Poszukuję pracy, nie masz może dla mnie jakiegoś zadania?</div>
+                    <div class="unableoption" id="prize">Brak nagród do odebrania</div>
+                    <div class="back">Wróć</div>
+                </div>
+            </div>
+            <div class="inside" id="ikosciol">
+                <div class="insidetitle" id="titlekosciol">
+                    <div class="titlecontainer">Wchodzisz do kościoła, panuje w nim zupełna cisza. Podchodzisz do kapłana.<br /><span class="talk">Niech cię Bóg błogosławi, w czym mogę ci pomóc, mój synu?</span></div>
+                </div>
+                <div class="options">
+                    <div class="option" id="heal">Czy mógłbyś uleczyć moje rany?</div>
+                    <div class="back">Wróć</div>
+                </div>
+            </div>
+            <div class="inside" id="ikowal">
+                <div class="insidetitle" id="titlekowal">
+                    <div class="titlecontainer">Wchodzisz do kuźni, czujesz mocny zapach gorącej stali. Podchodzisz do kowala.<br /><span class="talk">Jeśli chcesz kupić miecz, lepiej trafić nie mogłeś. Czym mogę służyć?</span></div>
+                </div>
+                <div class="options">
+                    <div class="option" id="buy">Pokaż swoje towary</div>
+                    <div class="back">Wróć</div>
+                </div>
+            </div>
+            <div class="inside" id="iwyprawa">
+                <div class="insidetitle" id="titlewyprawa">
+                    <div class="titlecontainer">Stajesz przed bramą wyjściową z wioski, przed sobą widzisz ogromny las, a w tle góry. Słyszysz głos strażnika:<br /><span class="talk">Miej się na baczności, ostatnio w lesie widzi się coraz więcej wilków i bandytów.</span></div>
+                </div>
+                <div class="options">
+                    <div class="unableoption" id="gotomission">Nie masz żadnych misji</div>
+                    <div class="back">Wróć</div>
+                </div>
+            </div>
+            <div class="inside" id="iwstep">
+                <div class="insidetitle" id="titlewstep">
+                    <div class="titlecontainer"> Nazywasz się <span class="imie"></span> i jesteś najemnikiem. Wędrujesz do miasta w poszukiwaniu pracy, nagle zza krzaków
+                        wybiega na ciebie wilk.</div>
+                </div>
+                <div class="options">
+                    <div class="option" id="begin1">Walczę z nim. Wygląda na groźnego, ale jest też chudy i słaby, pewnie długo nic nie jadł.</div>
+                    <div class="option" id="begin2">Uciekam do miasta. Wilk wygląda na bardzo słabego, raczej mnie nie dogoni.</div>
+                </div>
+            </div>
+            <div class="inside" id="imission">
+                <div class="insidetitle" id="titlemission">
+                    <div class="titlecontainer"><span class="talk" id="missiontalk">W sumie jest coś co mógłbyś zrobić... Po okolicy kręci się taki jeden wilk, odstrasza podróżnych, przez co mam coraz mniej klientów. Pozbądź się go, a Cię wynagrodzę. Aa no i weź jeszcze ten nóż na wilki, żebyś miał czym walczyć.</span></div>
+                </div>
+                <div class="options">
+                    <div class="option" id="mission1">Jasne, na pewno sobie poradzę&nbsp;<span class="green">(Otrzymano: Nóż na wilki)</span></div>
+                    <div class="option" id="mission2">Zajmę się tym, szykuj nagrodę&nbsp;<span class="green">(Otrzymano: Stara drewniana tarcza)</span></div>
+                    <div class="option" id="mission3">Dobra, nie strasz, idę klepać tego smoka</div>
+                    <div class="back">Wróć</div>
+                </div>
+            </div>
+            <div class="inside" id="imissionfight">
+                <div class="insidetitle" id="titlemissionfight">
+                    <div class="titlecontainer" id="fightcontainer">
+                        <div>Rozpoczęła się walka pomiędzy <span id="enemy"></span>, a <span class="imie"></span>.</div>
+                        <textarea class="fightlogs" rows="6" cols="50" readonly></textarea>
+                    </div>
+
+                </div>
+                <div class="options">
+                    <div class="option" id="attack">Atak</div>
+                </div>
+            </div>
+			<div class="inside" id="ikowalsklep">
+                <div class="insidetitle" id="titlekowalsklep">
+                    <div class="unablebutton" id="weapon1">Krótki miecz&nbsp;<span class="red" id="w1price">(100 złota)</span></div>
+                    <div class="unablebutton" id="weapon2">Długi miecz dwuręczny&nbsp;<span class="red" id="w2price">(200 złota)</span></div>
+                </div>
+                <div class="options">
+                    <div class="back">Wróć</div>
+                </div>
+            </div>
+			<div class="inside" id="ikosciolplacenie">
+                <div class="insidetitle" id="titlekosciolplacenie">
+                    <div class="titlecontainer"><span class="talk">Oczywiście, jednak w ramach mojej pomocy musisz złożyć skromny datek na kościół wynoszący 20 złotych monet. Czy chcesz kontynuować?</span></div>
+                </div>
+                <div class="options">
+                    <div class="unableoption" id="confirmheal">Tak, ulecz moje rany&nbsp;<span class="red" id="healprice">(20 złota)</span></div>
+                    <div class="back">Wróć</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
